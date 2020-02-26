@@ -15,7 +15,7 @@ const { expect } = chai;
 const PLACE_HOLDER_ADDRESS = "0x0000000000000000000000000000000000000001";
 const ZERO_ADDRESS = "0x0000000000000000000000000000000000000000";
 
-describe("PProxy", () => {
+describe("PProxyPausable", () => {
   let signers: Signer[];
   let proxy: PProxyPausable;
   let implementationContract: TestImplementation;
