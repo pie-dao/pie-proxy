@@ -2,6 +2,18 @@ pragma solidity ^0.6.2;
 
 contract PProxyStorage {
 
+    function readBool(bytes32 _key) public view returns(bool) {
+        return storageRead(_key) == bytes32(uint256(1));
+    }
+
+    function setBool(bytes32 _key, bool _value) internal {
+        if(_value) {
+            storageSet(_key, bytes32(uint256(1)));
+        } else {
+            storageSet(_key, bytes32(uint256(0)));
+        }
+    }
+
     function readAddress(bytes32 _key) public view returns(address) {
         return bytes32ToAddress(storageRead(_key));
     }
@@ -28,11 +40,11 @@ contract PProxyStorage {
         }
     }
 
-    function bytes32ToAddress(bytes32 _value) public view returns(address) {
+    function bytes32ToAddress(bytes32 _value) public pure returns(address) {
         return address(uint160(uint256(_value)));
     }
 
-    function addressToBytes32(address _value) public view returns(bytes32) {
+    function addressToBytes32(address _value) public pure returns(bytes32) {
         return bytes32(uint256(_value));
     }
 }

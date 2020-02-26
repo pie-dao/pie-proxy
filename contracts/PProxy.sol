@@ -34,6 +34,10 @@ contract PProxy is PProxyStorage {
 
 
     fallback () external payable {
+       return internalFallback();
+    }
+
+    function internalFallback() internal virtual {
         address contractAddr = readAddress(IMPLEMENTATION_SLOT);
         assembly {
             let ptr := mload(0x40)
