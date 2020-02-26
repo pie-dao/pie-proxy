@@ -1,36 +1,53 @@
-# Typescript Solidity Dev Starter Kit
+# Pie Proxy
 
-This is a starter kit for developing, testing, and deploying smart contracts with a full Typescript environment. This stack uses [Buidler](https://buidler.dev) as the platform layer to orchestrate all the tasks. [Ethers](https://docs.ethers.io/ethers.js/html/index.html) is used for all Ethereum interactions and testing.
+Generic proxy pattern which can be used with any smart contract.
 
-## Using this Project
+This project uses [Buidler](https://buidler.dev) and [Ethers](https://docs.ethers.io/ethers.js/html/index.html).
 
-Clone this repository, then install the dependencies with `npm install`. Build everything with `npm run build`. https://buidler.dev has excellent docs, and can be used as reference for extending this project.
+## Features 
+
+### Upgradeability
+
+The proxy owner can update the implementation and the overrides contract
+
+### Overrides
+
+Allows to overwrite functions from the implementation contract.
+
+### Pauzing
+
+Allows the pauser address to pause the contract in case of emergency
+
+### Conditions (TODO)
+
+Allows to attach conditions which which halt some functionality modify implementation. Can be used for capping assets under management, capping gas price or providing reentrancy protection without modifying the implementation.
+
+## Installing dependencies
+
+Clone this repository, then install the dependencies with `yarn`.
 
 ## Available Functionality
 
 ### Build Contracts
 
-`npm run compile`
+`yarn compile`
 
 ### Generate TypeChain Typings
 
-`npm run build`
+`yarn build`
 
 ### Run Contract Tests
 
-`npm run test`
-
-Note: As is, the tests fail on purpose. This is to show the Solidity stack traces that Buidler enables!
+`yarn test`
 
 ### Run Coverage Report for Tests
 
-`npm run coverage`
+`yarn coverage`
 
-Note: The branch coverage is 75 %.
 
 ### Deploy to Ethereum
 
-Create/modify network config in `buidler.config.ts` and add API key and private key, then run:
+Modify network config in `buidler.config.ts` and add API key and private key, then run:
 
 `npx buidler run --network rinkeby scripts/deploy.ts`
 
@@ -39,9 +56,3 @@ Create/modify network config in `buidler.config.ts` and add API key and private 
 Add Etherscan API key to `buidler.config.ts`, then run:
 
 `npx buidler verify-contract --contract-name Counter --address <DEPLOYED ADDRESS>`
-
-## Enhancement Wish List
-
-* Better migrations strategy (Buidler working on this)
-
-PRs and feedback welcome!
