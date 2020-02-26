@@ -58,6 +58,17 @@ describe("PProxy", () => {
   });
 
   describe("Pauzing", async() => {
+    it("Pausing the contract should work", async() => {
+      await proxy.setPaused(true);
+      const paused = await proxy.getPaused();
+      expect(paused).to.be.true;
+    });
+
+    it("Pausing the contract from a non pauzer address should fail", async() => {
+      const altSignerProxy = proxy.connect(signers[1]);
+      await expect(altSignerProxy.setPaused(true)).to.be.reverted;
+    });
+
     it("Calling a function when not paused should work", async() => {
       const proxiedImplementation = await setAndGetImplementation();
       await proxiedImplementation.setValue(PLACE_HOLDER_ADDRESS);
@@ -69,11 +80,6 @@ describe("PProxy", () => {
       await proxy.setPaused(true);
       const proxiedImplementation = await setAndGetImplementation();
       await expect(proxiedImplementation.setValue("TEST")).to.be.reverted;
-    });
-
-    it("Pausing the contract from a non pauzer address should fail", async() => {
-      const altSignerProxy = proxy.connect(signers[1]);
-      await expect(altSignerProxy.setPaused(true)).to.be.reverted;
     });
 
     it("Calling a function after unpausing should work", async() => {
