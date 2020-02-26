@@ -19,7 +19,7 @@ describe("PProxy", () => {
   let proxy: PProxy;
   let implementationContract: TestImplementation;
 
-  beforeEach(async () => {
+  beforeEach(async() => {
     signers = await ethers.signers();
     proxy = await deployContract(<Wallet>signers[0], PProxyArtifact) as PProxy;
     implementationContract = await deployContract(<Wallet>signers[0], TestImplementationArtifact) as TestImplementation;    

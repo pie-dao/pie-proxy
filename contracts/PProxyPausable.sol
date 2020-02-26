@@ -16,11 +16,11 @@ contract PProxyPausable is PProxy {
         _;
     }
 
-    function getPauser() public view returns (address) {
+    function getPauzer() public view returns (address) {
         return readAddress(PAUZER_SLOT);
     }
 
-    function setPauser(address _newPauzer) public onlyProxyOwner{
+    function setPauzer(address _newPauzer) public onlyProxyOwner{
         setAddress(PAUZER_SLOT, _newPauzer);
     }
 
