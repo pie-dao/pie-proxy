@@ -1,7 +1,7 @@
 {
-  "name": "@pie/proxy-contracts",
-  "version": "0.0.1",
-  "description": "",
+  "name": "@pie-dao/proxy",
+  "version": "0.0.2",
+  "description": "Generic proxy pattern which can be used with any smart contract.",
   "main": "index.js",
   "scripts": {
     "build": "npm run compile && npx buidler typechain",
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rhlsthrm/solidity-ts-dev-stack-example.git"
+    "url": "git+https://github.com/pie-dao/pie-proxy.git"
   },
-  "author": "rhlsthrm",
+  "author": "Pie DAO",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/rhlsthrm/solidity-ts-dev-stack-example/issues"
+    "url": "https://github.com/pie-dao/pie-proxy/issues"
   },
-  "homepage": "https://github.com/rhlsthrm/solidity-ts-dev-stack-example#readme",
+  "homepage": "https://github.com/pie-dao/pie-proxy#readme",
   "devDependencies": {
     "@nomiclabs/buidler": "^1.1.2",
     "@nomiclabs/buidler-ethers": "^1.1.2",
@@ -40,5 +40,8 @@
     "typechain-target-web3-v1": "^1.0.4",
     "typescript": "^3.7.5"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "directories": {
+    "test": "test"
+  }
 }
