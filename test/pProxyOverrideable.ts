@@ -2,8 +2,8 @@ import { ethers } from "@nomiclabs/buidler";
 import { Signer, Wallet } from "ethers";
 import chai from "chai";
 import { deployContract, solidity } from "ethereum-waffle";
-import PProxyOverrideableArtifact from "../artifacts/PProxyOverridable.json";
-import { PProxyOverridable } from "../typechain/PProxyOverridable"
+import PProxyOverrideableArtifact from "../artifacts/PProxyOverrideable.json";
+import { PProxyOverrideable } from "../typechain/PProxyOverrideable"
 import TestImplementationArtifact from "../artifacts/TestImplementation.json";
 import { TestImplementation } from "../typechain/TestImplementation";
 import TestOverridesArtifact from "../artifacts/TestOverrides.json";
@@ -19,13 +19,13 @@ const PLACE_HOLDER_ADDRESS = "0x0000000000000000000000000000000000000001";
 
 describe("PProxyOverrideable", () => {
   let signers: Signer[];
-  let proxy: PProxyOverridable;
+  let proxy: PProxyOverrideable;
   let implementationContract: TestImplementation;
   let overridesContract: TestOverrides;
 
   beforeEach(async() => {
     signers = await ethers.signers();
-    proxy = await deployContract(<Wallet>signers[0], PProxyOverrideableArtifact) as PProxyOverridable;
+    proxy = await deployContract(<Wallet>signers[0], PProxyOverrideableArtifact) as PProxyOverrideable;
     implementationContract = await deployContract(<Wallet>signers[0], TestImplementationArtifact) as TestImplementation;
     overridesContract = await deployContract(<Wallet>signers[0], TestOverridesArtifact) as TestOverrides;
   });

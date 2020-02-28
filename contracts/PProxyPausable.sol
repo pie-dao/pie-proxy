@@ -16,6 +16,11 @@ contract PProxyPausable is PProxy {
         _;
     }
 
+    modifier notPaused() {
+        require(!readBool(PAUSED_SLOT), "PProxyPausable.notPaused: contract is paused");
+        _;
+    }
+
     function getPauzer() public view returns (address) {
         return readAddress(PAUZER_SLOT);
     }
@@ -36,8 +41,8 @@ contract PProxyPausable is PProxy {
         setBool(PAUSED_SLOT, _value);
     }
 
-    function internalFallback() internal override {
-        require(!readBool(PAUSED_SLOT), "PProxyPausable.fallback: contract is paused");
+    function internalFallback() internal virtual override notPaused {
         super.internalFallback();
     }
+
 }

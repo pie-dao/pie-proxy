@@ -3,7 +3,7 @@ pragma solidity ^0.6.2;
 import "./PProxy.sol";
 import "./interfaces/IPProxyOverrides.sol";
 
-contract PProxyOverridable is PProxy {
+contract PProxyOverrideable is PProxy {
 
     bytes32 constant OVERRIDES_SLOT = keccak256(abi.encodePacked("OVERRIDES_SLOT"));
 
@@ -15,7 +15,7 @@ contract PProxyOverridable is PProxy {
         setAddress(OVERRIDES_SLOT, _newOverrides);
     }
 
-    function internalFallback() internal override {
+    function internalFallback() internal virtual override {
         IPProxyOverrides overrides = IPProxyOverrides(readAddress(OVERRIDES_SLOT));
         // If overrrides function implements function override the called function.
         if(overrides.doesOverride(msg.sig)) {
