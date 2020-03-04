@@ -18,9 +18,9 @@ Allows to overwrite functions from the implementation contract.
 
 Allows the pauser address to pause the contract in case of emergency
 
-### Conditions (TODO)
+### Side effects (TODO)
 
-Allows to attach conditions which which halt some functionality modify implementation. Can be used for capping assets under management, capping gas price or providing reentrancy protection without modifying the implementation.
+Allows to attach conditions and side effects which which halt some functionality modify implementation. Can be used for capping assets under management, capping gas price or providing reentrancy protection without modifying the implementation.
 
 ## Installing dependencies
 
