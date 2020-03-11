@@ -8,8 +8,8 @@ usePlugin("@nomiclabs/buidler-etherscan");
 usePlugin("buidler-typechain");
 usePlugin("solidity-coverage");
 
-const INFURA_API_KEY = "";
-const RINKEBY_PRIVATE_KEY = "";
+const INFURA_API_KEY = process.env.INFURA_API_KEY || "";
+const KOVAN_PRIVATE_KEY = process.env.KOVAN_PRIVATE_KEY || "";
 const ETHERSCAN_API_KEY = "";
 
 interface ExtendedBuidlerConfig extends BuidlerConfig {
@@ -22,9 +22,9 @@ const config: ExtendedBuidlerConfig = {
     version: "0.6.2"
   },
   networks: {
-    rinkeby: {
-      url: `https://rinkeby.infura.io/v3/${INFURA_API_KEY}`,
-      accounts: [RINKEBY_PRIVATE_KEY]
+    kovan: {
+      url: `https://kovan.infura.io/v3/${INFURA_API_KEY}`,
+      accounts: [KOVAN_PRIVATE_KEY]
     },
     coverage: {
       url: 'http://127.0.0.1:8555' // Coverage launches its own ganache-cli client
