@@ -7,7 +7,7 @@ contract PProxyPausable is PProxy {
     bytes32 constant PAUSED_SLOT = keccak256(abi.encodePacked("PAUSED_SLOT"));
     bytes32 constant PAUZER_SLOT = keccak256(abi.encodePacked("PAUZER_SLOT"));
 
-    constructor() public {
+    constructor() PProxy() public {
         setAddress(PAUZER_SLOT, msg.sender);
     }
 
