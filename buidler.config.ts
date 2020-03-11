@@ -1,5 +1,6 @@
-import { BuidlerConfig, usePlugin, task } from "@nomiclabs/buidler/config";
+require("dotenv").config();
 
+import { BuidlerConfig, usePlugin, task } from "@nomiclabs/buidler/config";
 import { PProxyPausableFactory } from "./typechain/PProxyPausableFactory";
 import { PProxyFactory } from "./typechain/PProxyFactory";
 
