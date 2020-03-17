@@ -11,6 +11,7 @@ usePlugin("solidity-coverage");
 
 const INFURA_API_KEY = process.env.INFURA_API_KEY || "";
 const KOVAN_PRIVATE_KEY = process.env.KOVAN_PRIVATE_KEY || "";
+const MAINNET_PRIVATE_KEY = process.env.MAINNET_PRIVATE_KEY || "";
 const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY || "";
 
 interface ExtendedBuidlerConfig extends BuidlerConfig {
@@ -23,6 +24,10 @@ const config: ExtendedBuidlerConfig = {
     version: "0.6.2"
   },
   networks: {
+    mainnet: {
+      url: `https://mainnet.infura.io/v3/${INFURA_API_KEY}`,
+      accounts: [MAINNET_PRIVATE_KEY]
+    },  
     kovan: {
       url: `https://kovan.infura.io/v3/${INFURA_API_KEY}`,
       accounts: [KOVAN_PRIVATE_KEY]
@@ -33,7 +38,7 @@ const config: ExtendedBuidlerConfig = {
   },
   etherscan: {
     // The url for the Etherscan API you want to use.
-    url: "https://api-kovan.etherscan.io/api",
+    url: "https://api.etherscan.io/api",
     // Your API key for Etherscan
     // Obtain one at https://etherscan.io/
     apiKey: ETHERSCAN_API_KEY
