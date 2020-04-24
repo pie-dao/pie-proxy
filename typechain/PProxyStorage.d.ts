@@ -20,26 +20,14 @@ interface PProxyStorageInterface extends Interface {
       encode([_value]: [Arrayish]): string;
     }>;
 
-    bytes32ToString: TypedFunctionDescription<{
-      encode([_value]: [Arrayish]): string;
-    }>;
-
     readAddress: TypedFunctionDescription<{
       encode([_key]: [Arrayish]): string;
     }>;
 
     readBool: TypedFunctionDescription<{ encode([_key]: [Arrayish]): string }>;
 
-    readString: TypedFunctionDescription<{
-      encode([_key]: [Arrayish]): string;
-    }>;
-
     storageRead: TypedFunctionDescription<{
       encode([_key]: [Arrayish]): string;
-    }>;
-
-    stringToBytes32: TypedFunctionDescription<{
-      encode([_value]: [string]): string;
     }>;
   };
 
@@ -67,34 +55,22 @@ export class PProxyStorage extends Contract {
 
     bytes32ToAddress(_value: Arrayish): Promise<string>;
 
-    bytes32ToString(_value: Arrayish): Promise<string>;
-
     readAddress(_key: Arrayish): Promise<string>;
 
     readBool(_key: Arrayish): Promise<boolean>;
 
-    readString(_key: Arrayish): Promise<string>;
-
     storageRead(_key: Arrayish): Promise<string>;
-
-    stringToBytes32(_value: string): Promise<string>;
   };
 
   addressToBytes32(_value: string): Promise<string>;
 
   bytes32ToAddress(_value: Arrayish): Promise<string>;
 
-  bytes32ToString(_value: Arrayish): Promise<string>;
-
   readAddress(_key: Arrayish): Promise<string>;
 
   readBool(_key: Arrayish): Promise<boolean>;
 
-  readString(_key: Arrayish): Promise<string>;
-
   storageRead(_key: Arrayish): Promise<string>;
-
-  stringToBytes32(_value: string): Promise<string>;
 
   filters: {};
 
@@ -103,16 +79,10 @@ export class PProxyStorage extends Contract {
 
     bytes32ToAddress(_value: Arrayish): Promise<BigNumber>;
 
-    bytes32ToString(_value: Arrayish): Promise<BigNumber>;
-
     readAddress(_key: Arrayish): Promise<BigNumber>;
 
     readBool(_key: Arrayish): Promise<BigNumber>;
 
-    readString(_key: Arrayish): Promise<BigNumber>;
-
     storageRead(_key: Arrayish): Promise<BigNumber>;
-
-    stringToBytes32(_value: string): Promise<BigNumber>;
   };
 }

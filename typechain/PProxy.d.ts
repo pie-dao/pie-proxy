@@ -20,10 +20,6 @@ interface PProxyInterface extends Interface {
       encode([_value]: [Arrayish]): string;
     }>;
 
-    bytes32ToString: TypedFunctionDescription<{
-      encode([_value]: [Arrayish]): string;
-    }>;
-
     getImplementation: TypedFunctionDescription<{ encode([]: []): string }>;
 
     getProxyOwner: TypedFunctionDescription<{ encode([]: []): string }>;
@@ -33,10 +29,6 @@ interface PProxyInterface extends Interface {
     }>;
 
     readBool: TypedFunctionDescription<{ encode([_key]: [Arrayish]): string }>;
-
-    readString: TypedFunctionDescription<{
-      encode([_key]: [Arrayish]): string;
-    }>;
 
     setImplementation: TypedFunctionDescription<{
       encode([_newImplementation]: [string]): string;
@@ -48,10 +40,6 @@ interface PProxyInterface extends Interface {
 
     storageRead: TypedFunctionDescription<{
       encode([_key]: [Arrayish]): string;
-    }>;
-
-    stringToBytes32: TypedFunctionDescription<{
-      encode([_value]: [string]): string;
     }>;
   };
 
@@ -76,8 +64,6 @@ export class PProxy extends Contract {
 
     bytes32ToAddress(_value: Arrayish): Promise<string>;
 
-    bytes32ToString(_value: Arrayish): Promise<string>;
-
     getImplementation(): Promise<string>;
 
     getProxyOwner(): Promise<string>;
@@ -85,8 +71,6 @@ export class PProxy extends Contract {
     readAddress(_key: Arrayish): Promise<string>;
 
     readBool(_key: Arrayish): Promise<boolean>;
-
-    readString(_key: Arrayish): Promise<string>;
 
     setImplementation(
       _newImplementation: string,
@@ -99,15 +83,11 @@ export class PProxy extends Contract {
     ): Promise<ContractTransaction>;
 
     storageRead(_key: Arrayish): Promise<string>;
-
-    stringToBytes32(_value: string): Promise<string>;
   };
 
   addressToBytes32(_value: string): Promise<string>;
 
   bytes32ToAddress(_value: Arrayish): Promise<string>;
-
-  bytes32ToString(_value: Arrayish): Promise<string>;
 
   getImplementation(): Promise<string>;
 
@@ -116,8 +96,6 @@ export class PProxy extends Contract {
   readAddress(_key: Arrayish): Promise<string>;
 
   readBool(_key: Arrayish): Promise<boolean>;
-
-  readString(_key: Arrayish): Promise<string>;
 
   setImplementation(
     _newImplementation: string,
@@ -131,16 +109,12 @@ export class PProxy extends Contract {
 
   storageRead(_key: Arrayish): Promise<string>;
 
-  stringToBytes32(_value: string): Promise<string>;
-
   filters: {};
 
   estimate: {
     addressToBytes32(_value: string): Promise<BigNumber>;
 
     bytes32ToAddress(_value: Arrayish): Promise<BigNumber>;
-
-    bytes32ToString(_value: Arrayish): Promise<BigNumber>;
 
     getImplementation(): Promise<BigNumber>;
 
@@ -150,14 +124,10 @@ export class PProxy extends Contract {
 
     readBool(_key: Arrayish): Promise<BigNumber>;
 
-    readString(_key: Arrayish): Promise<BigNumber>;
-
     setImplementation(_newImplementation: string): Promise<BigNumber>;
 
     setProxyOwner(_newOwner: string): Promise<BigNumber>;
 
     storageRead(_key: Arrayish): Promise<BigNumber>;
-
-    stringToBytes32(_value: string): Promise<BigNumber>;
   };
 }

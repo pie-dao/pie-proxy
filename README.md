@@ -10,10 +10,6 @@ This project uses [Buidler](https://buidler.dev) and [Ethers](https://docs.ether
 
 The proxy owner can update the implementation and the overrides contract
 
-### Overrides
-
-Allows to overwrite functions from the implementation contract.
-
 ### Pauzing
 
 Allows the pauser address to pause the contract in case of emergency
