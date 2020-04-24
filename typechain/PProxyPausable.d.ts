@@ -20,10 +20,6 @@ interface PProxyPausableInterface extends Interface {
       encode([_value]: [Arrayish]): string;
     }>;
 
-    bytes32ToString: TypedFunctionDescription<{
-      encode([_value]: [Arrayish]): string;
-    }>;
-
     getImplementation: TypedFunctionDescription<{ encode([]: []): string }>;
 
     getPaused: TypedFunctionDescription<{ encode([]: []): string }>;
@@ -37,10 +33,6 @@ interface PProxyPausableInterface extends Interface {
     }>;
 
     readBool: TypedFunctionDescription<{ encode([_key]: [Arrayish]): string }>;
-
-    readString: TypedFunctionDescription<{
-      encode([_key]: [Arrayish]): string;
-    }>;
 
     renouncePauzer: TypedFunctionDescription<{ encode([]: []): string }>;
 
@@ -62,10 +54,6 @@ interface PProxyPausableInterface extends Interface {
 
     storageRead: TypedFunctionDescription<{
       encode([_key]: [Arrayish]): string;
-    }>;
-
-    stringToBytes32: TypedFunctionDescription<{
-      encode([_value]: [string]): string;
     }>;
   };
 
@@ -93,8 +81,6 @@ export class PProxyPausable extends Contract {
 
     bytes32ToAddress(_value: Arrayish): Promise<string>;
 
-    bytes32ToString(_value: Arrayish): Promise<string>;
-
     getImplementation(): Promise<string>;
 
     getPaused(): Promise<boolean>;
@@ -106,8 +92,6 @@ export class PProxyPausable extends Contract {
     readAddress(_key: Arrayish): Promise<string>;
 
     readBool(_key: Arrayish): Promise<boolean>;
-
-    readString(_key: Arrayish): Promise<string>;
 
     renouncePauzer(
       overrides?: TransactionOverrides
@@ -134,15 +118,11 @@ export class PProxyPausable extends Contract {
     ): Promise<ContractTransaction>;
 
     storageRead(_key: Arrayish): Promise<string>;
-
-    stringToBytes32(_value: string): Promise<string>;
   };
 
   addressToBytes32(_value: string): Promise<string>;
 
   bytes32ToAddress(_value: Arrayish): Promise<string>;
-
-  bytes32ToString(_value: Arrayish): Promise<string>;
 
   getImplementation(): Promise<string>;
 
@@ -155,8 +135,6 @@ export class PProxyPausable extends Contract {
   readAddress(_key: Arrayish): Promise<string>;
 
   readBool(_key: Arrayish): Promise<boolean>;
-
-  readString(_key: Arrayish): Promise<string>;
 
   renouncePauzer(
     overrides?: TransactionOverrides
@@ -184,16 +162,12 @@ export class PProxyPausable extends Contract {
 
   storageRead(_key: Arrayish): Promise<string>;
 
-  stringToBytes32(_value: string): Promise<string>;
-
   filters: {};
 
   estimate: {
     addressToBytes32(_value: string): Promise<BigNumber>;
 
     bytes32ToAddress(_value: Arrayish): Promise<BigNumber>;
-
-    bytes32ToString(_value: Arrayish): Promise<BigNumber>;
 
     getImplementation(): Promise<BigNumber>;
 
@@ -207,8 +181,6 @@ export class PProxyPausable extends Contract {
 
     readBool(_key: Arrayish): Promise<BigNumber>;
 
-    readString(_key: Arrayish): Promise<BigNumber>;
-
     renouncePauzer(): Promise<BigNumber>;
 
     setImplementation(_newImplementation: string): Promise<BigNumber>;
@@ -220,7 +192,5 @@ export class PProxyPausable extends Contract {
     setProxyOwner(_newOwner: string): Promise<BigNumber>;
 
     storageRead(_key: Arrayish): Promise<BigNumber>;
-
-    stringToBytes32(_value: string): Promise<BigNumber>;
   };
 }

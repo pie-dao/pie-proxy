@@ -2,14 +2,6 @@ pragma solidity ^0.6.2;
 
 contract PProxyStorage {
 
-    function readString(bytes32 _key) public view returns(string memory) {
-        return bytes32ToString(storageRead(_key));
-    }
-
-    function setString(bytes32 _key, string memory _value) internal {
-        storageSet(_key, stringToBytes32(_value));
-    }
-
     function readBool(bytes32 _key) public view returns(bool) {
         return storageRead(_key) == bytes32(uint256(1));
     }
@@ -56,31 +48,4 @@ contract PProxyStorage {
         return bytes32(uint256(_value));
     }
 
-    function stringToBytes32(string memory _value) public pure returns (bytes32 result) {
-        bytes memory tempEmptyStringTest = bytes(_value);
-        if (tempEmptyStringTest.length == 0) {
-            return 0x0;
-        }
-
-        assembly {
-            result := mload(add(_value, 32))
-        }
-    }
-
-    function bytes32ToString(bytes32 _value) public pure returns (string memory) {
-        bytes memory bytesString = new bytes(32);
-        uint charCount = 0;
-        for (uint256 j = 0; j < 32; j++) {
-            byte char = byte(bytes32(uint(_value) * 2 ** (8 * j)));
-            if (char != 0) {
-                bytesString[charCount] = char;
-                charCount++;
-            }
-        }
-        bytes memory bytesStringTrimmed = new bytes(charCount);
-        for (uint256 j = 0; j < charCount; j++) {
-            bytesStringTrimmed[j] = bytesString[j];
-        }
-        return string(bytesStringTrimmed);
-    }
 }
