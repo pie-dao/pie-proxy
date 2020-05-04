@@ -4,6 +4,11 @@ Generic proxy pattern which can be used with any smart contract.
 
 This project uses [Buidler](https://buidler.dev) and [Ethers](https://docs.ethers.io/ethers.js/html/index.html).
 
+# 🚨Warning about upgrading your contracts 🚨
+You cannot change the order in which the contract state variables are declared, nor their type.
+Similar to ZOS proxy
+https://docs.openzeppelin.com/upgrades/2.8/writing-upgradeable#modifying-your-contracts
+
 ## Features 
 
 ### Upgradeability
