@@ -4,7 +4,7 @@ Generic proxy pattern which can be used with any smart contract.
 
 This project uses [Buidler](https://buidler.dev) and [Ethers](https://docs.ethers.io/ethers.js/html/index.html).
 
-# 🚨Reserved Memory Slots 🚨
+# 🚨Reserved Storage Slots 🚨
 
 Using these slots in the implementation by accident would be an issue.
 ```
