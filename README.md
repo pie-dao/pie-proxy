@@ -2,7 +2,7 @@
 
 Generic proxy pattern which can be used with any smart contract.
 
-This project uses [Hardhat](https://buidler.dev) and [Ethers](https://docs.ethers.io/ethers.js/html/index.html).
+This project uses [Hardhat](https://hardhat.org/) and [Ethers](https://docs.ethers.io/ethers.js/html/index.html).
 
 # 🚨Reserved Storage Slots 🚨
 
