@@ -2,11 +2,12 @@
 
 Generic proxy pattern which can be used with any smart contract.
 
-This project uses [Buidler](https://buidler.dev) and [Ethers](https://docs.ethers.io/ethers.js/html/index.html).
+This project uses [Hardhat](https://buidler.dev) and [Ethers](https://docs.ethers.io/ethers.js/html/index.html).
 
 # 🚨Reserved Storage Slots 🚨
 
 Using these slots in the implementation by accident would be an issue.
+
 ```
 bytes32 constant IMPLEMENTATION_SLOT = keccak256(abi.encodePacked("IMPLEMENTATION_SLOT"));
 bytes32 constant OWNER_SLOT = keccak256(abi.encodePacked("OWNER_SLOT"));
@@ -14,7 +15,7 @@ bytes32 constant PAUSED_SLOT = keccak256(abi.encodePacked("PAUSED_SLOT")); (DEPR
 bytes32 constant PAUZER_SLOT = keccak256(abi.encodePacked("PAUZER_SLOT")); (DEPRECATED)
 ```
 
-## Features 
+## Features
 
 ### Upgradeability
 
@@ -46,7 +47,6 @@ Clone this repository, then install the dependencies with `yarn`.
 
 `yarn coverage`
 
-
 ### Deploy to Ethereum
 
 Modify network config in `buidler.config.ts` and add API key and private key, then run:
@@ -59,7 +59,6 @@ Add Etherscan API key to `buidler.config.ts`, then run:
 
 `npx buidler verify-contract --contract-name Counter --address <DEPLOYED ADDRESS>`
 
-
 ### Interacting with the proxy
 
 #### Changing the owner
@@ -67,7 +66,7 @@ Add Etherscan API key to `buidler.config.ts`, then run:
 The proxy owner is able to set the address of the implementation contract.
 To change the proxy owner you can call this function from the current proxyOwner:
 
-```
+```js
     function setProxyOwner(address _newOwner) onlyProxyOwner public;
 ```
 
@@ -75,7 +74,7 @@ To change the proxy owner you can call this function from the current proxyOwner
 
 To change the implementation contract you can call this function from the proxyOwner:
 
-```
+```js
     function setImplementation(address _newImplementation) onlyProxyOwner public;
 ```
 
