@@ -17,7 +17,7 @@ bytes32 constant PAUZER_SLOT = keccak256(abi.encodePacked("PAUZER_SLOT")); (DEPR
 
 ## Features
 
-### Upgradeabilitys
+### Upgradeability
 
 The proxy owner can update the implementation and the overrides contract
 
