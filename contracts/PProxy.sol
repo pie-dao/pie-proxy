@@ -1,4 +1,4 @@
-pragma solidity 0.8.16;
+pragma solidity ^0.8.1;
 
 import "./PProxyStorage.sol";
 import "./Address.sol";
