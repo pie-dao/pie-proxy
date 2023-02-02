@@ -17,7 +17,7 @@ bytes32 constant PAUZER_SLOT = keccak256(abi.encodePacked("PAUZER_SLOT")); (DEPR
 
 ## Features
 
-### Upgradeability
+### Upgradeabilitys
 
 The proxy owner can update the implementation and the overrides contract
 
@@ -27,41 +27,29 @@ Allows the pauser address to pause the contract in case of emergency
 
 ## Installing dependencies
 
-Clone this repository, then install the dependencies with `yarn`.
+Clone this repository, then install the dependencies with `npm i`.
 
 ## Available Functionality
 
 ### Build Contracts
 
-`yarn compile`
+`npx hardhat compile`
 
 ### Generate TypeChain Typings
 
-`yarn build`
+`npx hardhat build`
 
 ### Run Contract Tests
 
-`yarn test`
+`npx hardhat test`
 
 ### Run Coverage Report for Tests
 
-`yarn coverage`
+`npx hardhat coverage`
 
-### Deploy to Ethereum
+## Interacting with the proxy
 
-Modify network config in `buidler.config.ts` and add API key and private key, then run:
-
-`npx buidler run --network rinkeby scripts/deploy.ts`
-
-### Verify on Etherscan
-
-Add Etherscan API key to `buidler.config.ts`, then run:
-
-`npx buidler verify-contract --contract-name Counter --address <DEPLOYED ADDRESS>`
-
-### Interacting with the proxy
-
-#### Changing the owner
+### Changing the owner
 
 The proxy owner is able to set the address of the implementation contract.
 To change the proxy owner you can call this function from the current proxyOwner:
@@ -77,6 +65,17 @@ To change the implementation contract you can call this function from the proxyO
 ```js
     function setImplementation(address _newImplementation) onlyProxyOwner public;
 ```
+
+### Updating the implementation and initializing
+
+You can create a new implementation contract and initialize it in one transaction by calling this function from the proxyOwner:
+
+```js
+    function setImplementationAndCall(address _newImplementation, bytes calldata _data) payable onlyProxyOwner public;
+```
+
+This can typically be used with initializers to prevent situations where an attacker can insert a call to the intializer after the proxy has been deployed.
+By calling setImplementationAndCall the proxy owner can ensure that the initializer is called in the same transaction as the implementation is set.
 
 ### Considerations when upgrading implementations
 

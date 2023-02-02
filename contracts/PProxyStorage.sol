@@ -1,20 +1,19 @@
-pragma solidity ^0.7.1;
+pragma solidity 0.8.16;
 
 contract PProxyStorage {
-
-    function readBool(bytes32 _key) public view returns(bool) {
+    function readBool(bytes32 _key) public view returns (bool) {
         return storageRead(_key) == bytes32(uint256(1));
     }
 
     function setBool(bytes32 _key, bool _value) internal {
-        if(_value) {
+        if (_value) {
             storageSet(_key, bytes32(uint256(1)));
         } else {
             storageSet(_key, bytes32(uint256(0)));
         }
     }
 
-    function readAddress(bytes32 _key) public view returns(address) {
+    function readAddress(bytes32 _key) public view returns (address) {
         return bytes32ToAddress(storageRead(_key));
     }
 
@@ -22,7 +21,7 @@ contract PProxyStorage {
         storageSet(_key, addressToBytes32(_value));
     }
 
-    function storageRead(bytes32 _key) public view returns(bytes32) {
+    function storageRead(bytes32 _key) public view returns (bytes32) {
         bytes32 value;
         //solium-disable-next-line security/no-inline-assembly
         assembly {
@@ -40,12 +39,11 @@ contract PProxyStorage {
         }
     }
 
-    function bytes32ToAddress(bytes32 _value) public pure returns(address) {
+    function bytes32ToAddress(bytes32 _value) public pure returns (address) {
         return address(uint160(uint256(_value)));
     }
 
-    function addressToBytes32(address _value) public pure returns(bytes32) {
-        return bytes32(uint256(_value));
+    function addressToBytes32(address _value) public pure returns (bytes32) {
+        return bytes32(uint256(uint160(_value)));
     }
-
 }
